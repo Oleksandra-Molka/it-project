@@ -3,7 +3,7 @@ const appContainer = document.getElementById('app');
 function initApp() {
     // Створюємо головний заголовок
     const title = document.createElement('h1');
-    title.textContent = 'IT-Project: Початкова версія';
+    title.textContent = 'Оновлена Головна версія';
     title.className = 'main-title';
     
     // Додаємо заголовок на сторінку
