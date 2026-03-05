@@ -1,4 +1,5 @@
 # it-project
+[![CI/CD Pipeline](https://github.com/Oleksandra-Molka/it-project/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/Oleksandra-Molka/it-project/actions/workflows/ci-cd.yml)
 
 MVP-проєкт для лабораторних робіт
 
