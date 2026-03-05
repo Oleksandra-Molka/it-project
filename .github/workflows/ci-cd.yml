@@ -1,46 +1,49 @@
 name: CI/CD Pipeline
 
-# Тригери: коли запускати автоматизацію
+# Налаштування тригерів: коли запускати автоматизацію
 on:
+  # Запуск при push у гілки main та develop
   push:
-    branches: 
-        - main
-        - develop
+    branches:
+      - main
+      - develop
+  # Запуск при створенні Pull Request у ці гілки
   pull_request:
-    branches: 
-        - main
-        - develop
+    branches:
+      - main
+      - develop
 
 jobs:
+  # Завдання для збірки та тестування
   build-and-test:
     name: Build and Test
-    # Використовуємо віртуальну машину з Ubuntu (Runner)
+    # Використовуємо останню стабільну версію Ubuntu
     runs-on: ubuntu-latest
 
     steps:
-      # Крок 1: Копіюємо код із репозиторію на віртуальну машину
+      # Крок 1: Отримання коду з репозиторію
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Крок 2: Встановлюємо Node.js потрібної версії
+      # Крок 2: Налаштування середовища Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      # Крок 3: Встановлюємо залежності (бібліотеки)
+      # Крок 3: Встановлення залежностей (бібліотек)
       - name: Install dependencies
         run: npm install
 
-      # Крок 4: Перевірка лінтером (Quality Gate 1)
+      # Крок 4: Запуск статичного аналізатора (лінтера)
       - name: Run linter
         run: npm run lint
 
-      # Крок 5: Запуск Unit-тестів (Quality Gate 2)
+      # Крок 5: Запуск модульних тестів
       - name: Run unit tests
         run: npm run test:unit
 
-      # Крок 6: Тестова збірка проєкту
-      - name: Build project
+      # Крок 6: Створення продуктової збірки (артефакту)
+      - name: Build for production
         run: npm run build
