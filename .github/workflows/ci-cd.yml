@@ -1,0 +1,42 @@
+name: CI/CD Pipeline
+
+# Тригери: коли запускати автоматизацію
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    # Використовуємо віртуальну машину з Ubuntu (Runner)
+    runs-on: ubuntu-latest
+
+    steps:
+      # Крок 1: Копіюємо код із репозиторію на віртуальну машину
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Крок 2: Встановлюємо Node.js потрібної версії
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # Крок 3: Встановлюємо залежності (бібліотеки)
+      - name: Install dependencies
+        run: npm install
+
+      # Крок 4: Перевірка лінтером (Quality Gate 1)
+      - name: Run linter
+        run: npm run lint
+
+      # Крок 5: Запуск Unit-тестів (Quality Gate 2)
+      - name: Run unit tests
+        run: npm run test:unit
+
+      # Крок 6: Тестова збірка проєкту
+      - name: Build project
+        run: npm run build
