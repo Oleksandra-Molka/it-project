@@ -1,3 +1,24 @@
-node_modules/
+
+# Build directory
+build/
+
+# Executable files
+*.exe
+
+# Object files
+*.o
+
+# Environment files
 .env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+coverage/
+frontend/node_modules/
+frontend/dist/
+frontend/.env
 dist/
