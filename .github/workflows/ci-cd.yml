@@ -3,9 +3,13 @@ name: CI/CD Pipeline
 # Тригери: коли запускати автоматизацію
 on:
   push:
-    branches: [ main, develop ]
+    branches: 
+        - main
+        - develop
   pull_request:
-    branches: [ main, develop ]
+    branches: 
+        - main
+        - develop
 
 jobs:
   build-and-test:
