@@ -1,13 +1,16 @@
 name: CI/CD Pipeline
 
+# Налаштування тригерів: коли запускати автоматизацію
 on:
-  # Запуск при push у основні гілки
   push:
-    branches: [ main, develop ]
-  # Запуск при створенні Pull Request
+    branches:
+      - main
+      - develop
   pull_request:
-    branches: [ main, develop ]
-  # ЦЕЙ РЯДОК ДОЗВОЛЯЄ ЗАПУСТИТИ ПАЙПЛАЙН КНОПКОЮ ВРУЧНУ
+    branches:
+      - main
+      - develop
+  # Дозволяє запускати вручну кнопкою
   workflow_dispatch: 
 
 jobs:
@@ -16,23 +19,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Отримання коду
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Налаштування Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
+      # 3. Встановлення залежностей
       - name: Install dependencies
         run: npm install
 
+      # 4. Перевірка лінтером (Quality Gate 1)
       - name: Run linter
         run: npm run lint
 
+      # 5. Запуск Unit-тестів (Quality Gate 2)
+      # Використовуємо саме test:unit, бо він швидкий і не потребує браузерів
       - name: Run unit tests
         run: npm run test:unit
 
+      # 6. Збірка проекту (Фінальна перевірка)
       - name: Build for production
         run: npm run build
