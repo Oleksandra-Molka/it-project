@@ -37,7 +37,7 @@ function renderContent() {
             is_authenticated: true   
         });
         console.log('Подія task_created відправлена');
-        alert('Завдання створено!');
+        console.log('Завдання створено!');
     };
 
     // 2. Завершення завдання (task_completed)
@@ -48,7 +48,7 @@ function renderContent() {
             time_to_complete_seconds: 120 // 
         });
         console.log('Подія task_completed відправлена');
-        alert('Завдання виконано!');
+        console.log('Завдання виконано!');
     };
 
     // 3. Видалення завдання (task_deleted)
@@ -59,7 +59,7 @@ function renderContent() {
             reason: 'mistake' 
         });
         console.log('Подія task_deleted відправлена');
-        alert('Завдання видалено!');
+        console.log('Завдання видалено!');
     };
 
     // Кнопка Feature Flag 
