@@ -1,29 +1,36 @@
-{"name": "it-project",
-  "version": "1.0.0",
-  "type": "module",
- "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint \"src/**/*.js\" --fix",
-    "format": "prettier --write \"src/**/*.{js,json,css}\"",
-    "test:unit": "vitest",
-    "test:unit:ui": "vitest --ui",
-    "test:unit:coverage": "vitest run --coverage",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
-  },
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@playwright/test": "^1.58.2",
-    "@vitest/coverage-v8": "^4.0.18",
-    "@vitest/ui": "^4.0.18",
-    "eslint": "^10.0.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.5",
-    "jsdom": "^28.1.0",
-    "prettier": "^3.8.1",
-    "vite": "^7.3.1",
-    "vitest": "^4.0.18"
-  }
-}
+{
+    "name":"it-project",
+    "version":"1.0.0",
+    "type":"module",
+    "scripts":
+    {
+        "dev":"vite",
+        "build":"vite build",
+        "preview":"vite preview",
+        "lint":"eslint \"src/**/*.js\" --fix",
+        "format":"prettier --write \"src/**/*.{js,json,css}\"",
+        "test:unit":"vitest",
+        "test:unit:ui":"vitest --ui",
+        "test:unit:coverage":"vitest run --coverage",
+        "test:e2e":"playwright test",
+        "test:e2e:ui":"playwright test --ui"
+    },
+    "devDependencies":
+    {
+        "@eslint/js":"^10.0.1",
+        "@playwright/test":"^1.58.2",
+        "@vitest/coverage-v8":"^4.0.18",
+        "@vitest/ui":"^4.0.18",
+        "eslint":"^10.0.2",
+        "eslint-config-prettier":"^10.1.8",
+        "eslint-plugin-prettier":"^5.5.5",
+        "jsdom":"^28.1.0",
+        "prettier":"^3.8.1",
+        "vite":"^7.3.1",
+        "vitest":"^4.0.18"
+    },
+    "dependencies":
+    {
+        "posthog-js":"^1.359.1"
+    }
+    }
